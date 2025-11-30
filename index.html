@@ -2,10 +2,289 @@
 <html lang="en">
 <head>
     <meta name="google-adsense-account" content="ca-pub-4813365942531906">
-    <title>Verification Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Forge: 12 Free Online PDF Tools - The Full Suite for Document Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- LIBRARY ADDED: PDF-LIB.JS for client-side manipulation -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+        }
+        .tool-card {
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .ad-slot {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e3f2fd;
+            border: 2px dashed #42a5f5;
+            color: #1565c0;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        #upload-section {
+            display: none;
+        }
+    </style>
 </head>
-<body>
-    <h1>AdSense Verification Page</h1>
-    <p>This page is temporarily simplified for Google AdSense verification purposes.</p>
-</body>
-</html>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold text-blue-600 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L6.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+                PDF Forge
+            </a>
+            <nav class="hidden sm:flex space-x-6">
+                <a href="index.html" class="text-gray-600 hover:text-blue-600 font-semibold transition duration-150">Home</a>
+                <a href="#tools" class="text-gray-600 hover:text-blue-600 font-semibold transition duration-150">All Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="text-center mb-12">
+            <h1 class="text-5xl font-extrabold text-gray-800 mb-4">
+                12 Free Essential PDF Tools
+            </h1>
+            <p class="text-xl text-gray-500 max-w-3xl mx-auto">
+                The ultimate 100% free toolkit to merge, split, manage, and protect your documents instantly.
+            </p>
+        </section>
+        
+        <!-- Ad Slot 1: Top Leaderboard -->
+        <div class="ad-slot text-xs sm:text-sm max-w-3xl mx-auto">
+            ADSENSE SLOT 1: TOP BANNER / LEADERBOARD AD (728x90 Adaptive)
+            <!-- Your actual AdSense code goes here -->
+        </div>
+
+        <!-- Tool Selection Section -->
+        <section id="tools" class="py-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Select a Tool</h2>
+            
+            <!-- Grid for 12 working tools (6 columns on large screens) -->
+            <div id="tool-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12 gap-4">
+                
+                <!-- 1. Merge PDF (Red) -->
+                <div data-tool="Merge" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-red-500 flex flex-col items-center text-center" onclick="selectTool('Merge')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">Merge</h3>
+                    <p class="text-gray-500 text-xs mt-1">Combine files.</p>
+                </div>
+
+                <!-- 2. Rotate PDF (Purple) -->
+                <div data-tool="Rotate" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-purple-500 flex flex-col items-center text-center" onclick="selectTool('Rotate')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4zm3 7a1 1 0 000 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 00-1.414 1.414L10.586 9H7z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">Rotate</h3>
+                    <p class="text-gray-500 text-xs mt-1">Change orientation.</p>
+                </div>
+                
+                <!-- 3. Remove Pages (Blue) -->
+                <div data-tool="Remove" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-blue-500 flex flex-col items-center text-center" onclick="selectTool('Remove')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">Remove</h3>
+                    <p class="text-gray-500 text-xs mt-1">Delete specific pages.</p>
+                </div>
+
+                <!-- 4. Extract Pages (Yellow-Green) -->
+                <div data-tool="Extract" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-lime-500 flex flex-col items-center text-center" onclick="selectTool('Extract')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-lime-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 4a2 2 0 012-2h6a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V4zm12 3a1 1 0 011 1v8a1 1 0 11-2 0V8a1 1 0 011-1zm-8 4a1 1 0 100 2h2a1 1 0 100-2H9z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">Extract</h3>
+                    <p class="text-gray-500 text-xs mt-1">Save selected pages.</p>
+                </div>
+                
+                <!-- 5. Reorder Pages (Green) -->
+                <div data-tool="Reorder" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-green-500 flex flex-col items-center text-center" onclick="selectTool('Reorder')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V3zm2 4a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1H5zm6 0a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1h-4z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">Reorder</h3>
+                    <p class="text-gray-500 text-xs mt-1">Change page sequence.</p>
+                </div>
+
+                <!-- 6. Add Page Numbers (Orange) -->
+                <div data-tool="Number" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-orange-500 flex flex-col items-center text-center" onclick="selectTool('Number')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-orange-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1h10V3a1 1 0 10-2 0v1H8V3a1 1 0 00-1-1zm-2 5a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zm0 4a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zm1 3a1 1 0 100 2h8a1 1 0 100-2H5z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">Page #s</h3>
+                    <p class="text-gray-500 text-xs mt-1">Insert sequential numbers.</p>
+                </div>
+                
+                <!-- 7. Watermark Text (Cyan) -->
+                <div data-tool="Watermark" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-cyan-500 flex flex-col items-center text-center" onclick="selectTool('Watermark')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-cyan-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 10-2.828-2.828l-.793.793 2.828 2.828.793-.793zm-9.172 0a2 2 0 000 2.828l.793.793 2.828-2.828-.793-.793a2 2 0 00-2.828 0zm7.586 10a2 2 0 10-2.828 2.828l.793-.793 2.828-2.828-.793.793zm-9.172 0a2 2 0 000-2.828l-.793.793-2.828 2.828.793.793zM10 20a1 1 0 100-2 1 1 0 000 2zM5 10a1 1 0 110-2h10a1 1 0 110 2H5z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">Watermark</h3>
+                    <p class="text-gray-500 text-xs mt-1">Stamp custom text.</p>
+                </div>
+                
+                <!-- 8. Edit Metadata (Yellow) -->
+                <div data-tool="Metadata" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-yellow-500 flex flex-col items-center text-center" onclick="selectTool('Metadata')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm10 2a1 1 0 100 2h-4a1 1 0 100 2h4a1 1 0 100 2h-4a1 1 0 100 2h4a1 1 0 100 2h-4a1 1 0 100 2H6a1 1 0 00-1 1V6a1 1 0 001-1h8z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">Metadata</h3>
+                    <p class="text-gray-500 text-xs mt-1">Edit Title/Author.</p>
+                </div>
+                
+                 <!-- 9. Flatten PDF (Pink) -->
+                <div data-tool="Flatten" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-pink-500 flex flex-col items-center text-center" onclick="selectTool('Flatten')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm10 2a1 1 0 100 2h-4a1 1 0 100 2h4a1 1 0 100 2h-4a1 1 0 100 2h4a1 1 0 100 2h-4a1 1 0 100 2h4a1 1 0 100 2H6a1 1 0 00-1 1V6a1 1 0 001-1h8z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">Flatten</h3>
+                    <p class="text-gray-500 text-xs mt-1">Merge forms/annotations.</p>
+                </div>
+
+                <!-- 10. View Info (Gray) -->
+                <div data-tool="Info" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-gray-500 flex flex-col items-center text-center" onclick="selectTool('Info')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2h1a1 1 0 001-1V7a1 1 0 10-2 0v2z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">View Info</h3>
+                    <p class="text-gray-500 text-xs mt-1">Quickly check file details.</p>
+                </div>
+
+                <!-- 11. Protect PDF (Indigo) -->
+                <div data-tool="Protect" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-indigo-500 flex flex-col items-center text-center" onclick="selectTool('Protect')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" /></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">Protect</h3>
+                    <p class="text-gray-500 text-xs mt-1">Add password.</p>
+                </div>
+                
+                <!-- 12. Unlock PDF (Teal) -->
+                <div data-tool="Unlock" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-teal-500 flex flex-col items-center text-center" onclick="selectTool('Unlock')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-teal-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" /><path d="M10 12a1 1 0 100-2 1 1 0 000 2z"/></svg>
+                    <h3 class="text-sm font-semibold text-gray-800">Unlock</h3>
+                    <p class="text-gray-500 text-xs mt-1">Remove password.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Processing/Upload Section (Hidden until tool is selected) -->
+        <section id="upload-section" class="bg-white p-8 rounded-xl shadow-2xl border-2 border-gray-100 mt-12">
+            <h2 id="tool-title" class="text-2xl font-bold text-gray-700 mb-6 text-center"></h2>
+            
+            <!-- Tool Specific Options (Password, Pages, or Rotation angle) -->
+            <div id="tool-options" class="mb-6 space-y-4 hidden">
+                <!-- Inputs generated dynamically -->
+            </div>
+
+            <!-- File Upload Dropzone -->
+            <div id="dropzone" class="border-4 border-dashed border-gray-300 rounded-lg p-16 text-center cursor-pointer transition duration-200 hover:border-blue-400 hover:bg-blue-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M5.5 13a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
+                    <path fill-rule="evenodd" d="M12 7H5.5a4.5 4.5 0 100 9H14a3 3 0 003-3V9a2 2 0 00-2-2h-1.5z" clip-rule="evenodd" />
+                </svg>
+                <p class="mt-2 text-gray-700 font-semibold">Drag & Drop PDF file(s) here, or <span class="text-blue-600 underline">Click to upload</span></p>
+                <input type="file" id="file-input" accept=".pdf" multiple class="hidden">
+            </div>
+
+            <!-- Uploaded File List -->
+            <div id="file-list" class="mt-6 space-y-3">
+                <!-- Files will be added here by JavaScript -->
+            </div>
+
+            <!-- Processing Button -->
+            <button id="process-button" disabled class="w-full mt-8 py-3 bg-gray-400 text-white font-bold rounded-lg transition duration-200 hover:bg-gray-500 disabled:opacity-50" onclick="startProcessing()">
+                Start Processing
+            </button>
+            
+            <!-- Loading/Result Message -->
+            <p id="message" class="mt-4 text-center text-gray-600 hidden"></p>
+        </section>
+        
+        <!-- Ad Slot 2: Responsive Footer Ad -->
+        <div class="ad-slot text-xs sm:text-sm max-w-3xl mx-auto mt-12">
+            ADSENSE SLOT 2: RESPONSIVE CONTENT/FOOTER AD (300x250 or Adaptive)
+            <!-- Your actual AdSense code goes here -->
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+            <p class="text-sm text-gray-400">PDF Forge - Free PDF Tools. &copy; 2025. | <a href="privacy.html" class="hover:text-blue-400">Privacy Policy</a> | <a href="contact.html" class="hover:text-blue-400">Contact Us</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Core Application State & Constants ---
+        const { PDFDocument, degrees, rgb, StandardFonts } = PDFLib;
+        
+        let selectedTool = null;
+        let uploadedFiles = [];
+        const maxFiles = 5; 
+        const uploadSection = document.getElementById('upload-section');
+        const toolTitle = document.getElementById('tool-title');
+        const fileInput = document.getElementById('file-input');
+        const fileList = document.getElementById('file-list');
+        const dropzone = document.getElementById('dropzone');
+        const processButton = document.getElementById('process-button');
+        const messageElement = document.getElementById('message');
+        const toolOptionsDiv = document.getElementById('tool-options');
+
+        /**
+         * Step 1: Tool Selection (Updates UI and sets required files)
+         */
+        function selectTool(toolName) {
+            selectedTool = toolName;
+            toolTitle.textContent = `${toolName} PDF Files`;
+            
+            uploadSection.style.display = 'block';
+            uploadSection.scrollIntoView({ behavior: 'smooth' });
+            uploadedFiles = [];
+            updateFileList();
+            messageElement.classList.add('hidden');
+            
+            // Render tool-specific options
+            renderToolOptions(toolName);
+        }
+        
+        function renderToolOptions(toolName) {
+            toolOptionsDiv.innerHTML = '';
+            toolOptionsDiv.classList.add('hidden');
+            
+            switch(toolName) {
+                case 'Rotate':
+                    toolOptionsDiv.classList.remove('hidden');
+                    toolOptionsDiv.innerHTML = `
+                        <label class="block text-sm font-medium text-gray-700">Rotation Angle:</label>
+                        <select id="rotation-angle" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option value="90">90 Degrees Clockwise</option>
+                            <option value="180">180 Degrees</option>
+                            <option value="270">90 Degrees Counter-Clockwise</option>
+                        </select>
+                    `;
+                    break;
+                case 'Protect':
+                    toolOptionsDiv.classList.remove('hidden');
+                    toolOptionsDiv.innerHTML = `
+                        <label for="password-input" class="block text-sm font-medium text-gray-700">Set New Password:</label>
+                        <input type="password" id="password-input" placeholder="Enter a strong password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2">
+                    `;
+                    break;
+                case 'Unlock':
+                     toolOptionsDiv.classList.remove('hidden');
+                    toolOptionsDiv.innerHTML = `
+                        <label for="password-input" class="block text-sm font-medium text-gray-700">Enter Current Password to Unlock:</label>
+                        <input type="password" id="password-input" placeholder="Enter password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2">
+                    `;
+                    break;
+                case 'Remove':
+                case 'Extract':
+                case 'Reorder': // Reorder needs the page list
+                     toolOptionsDiv.classList.remove('hidden');
+                    let placeholderText = toolName === 'Reorder' ? 'e.g., 5, 3, 1, 2, 4 (New page sequence)' : 'e.g., 3, 5-7 (Pages to process)';
+                    toolOptionsDiv.innerHT
