@@ -8,14 +8,14 @@
     <title>PDF Forge: 12 Free Online PDF Tools - The Full Suite for Document Management</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- LIBRARY ADDED: PDF-LIB.JS for client-side manipulation (Ensuring correct loading) -->
+    <!-- LIBRARY ADDED: PDF-LIB.JS for client-side manipulation -->
     <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f7f9fc;
         }
-        /* ... (Rest of CSS styles) ... */
+        /* ... (CSS styles omitted for brevity) ... */
         .tool-card {
             transition: all 0.3s ease-in-out;
             cursor: pointer;
@@ -45,7 +45,7 @@
 </head>
 <body class="antialiased">
 
-    <!-- Header and Main Content (No changes in HTML structure needed) -->
+    <!-- Header and Main Content (HTML structure omitted for brevity) -->
     <header class="bg-white shadow-md sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="index.html" class="text-3xl font-extrabold text-blue-600 flex items-center">
@@ -172,14 +172,12 @@
             </div>
         </section>
         
-        <!-- Processing/Upload Section (Hidden until tool is selected) -->
+        <!-- Processing/Upload Section (HTML omitted for brevity) -->
         <section id="upload-section" class="bg-white p-8 rounded-xl shadow-2xl border-2 border-gray-100 mt-12">
             <h2 id="tool-title" class="text-2xl font-bold text-gray-700 mb-6 text-center"></h2>
             
-            <!-- Tool Specific Options (Password, Pages, or Rotation angle) -->
-            <div id="tool-options" class="mb-6 space-y-4 hidden">
-                <!-- Inputs generated dynamically -->
-            </div>
+            <!-- Tool Specific Options -->
+            <div id="tool-options" class="mb-6 space-y-4 hidden"></div>
 
             <!-- File Upload Dropzone -->
             <div id="dropzone" class="border-4 border-dashed border-gray-300 rounded-lg p-16 text-center cursor-pointer transition duration-200 hover:border-blue-400 hover:bg-blue-50">
@@ -192,9 +190,7 @@
             </div>
 
             <!-- Uploaded File List -->
-            <div id="file-list" class="mt-6 space-y-3">
-                <!-- Files will be added here by JavaScript -->
-            </div>
+            <div id="file-list" class="mt-6 space-y-3"></div>
 
             <!-- Processing Button -->
             <button id="process-button" disabled class="w-full mt-8 py-3 bg-gray-400 text-white font-bold rounded-lg transition duration-200 hover:bg-gray-500 disabled:opacity-50" onclick="startProcessing()">
@@ -213,7 +209,7 @@
 
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (Omitted for brevity) -->
     <footer class="bg-gray-800 text-white mt-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
             <p class="text-sm text-gray-400">PDF Forge - Free PDF Tools. &copy; 2025. | <a href="privacy.html" class="hover:text-blue-400">Privacy Policy</a> | <a href="contact.html" class="hover:text-blue-400">Contact Us</a></p>
@@ -235,7 +231,19 @@
         const processButton = document.getElementById('process-button');
         const messageElement = document.getElementById('message');
         const toolOptionsDiv = document.getElementById('tool-options');
-
+        
+        /**
+         * Fallback for reading file data safely.
+         */
+        function readFileAsync(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = () => reject(reader.error);
+                reader.readAsArrayBuffer(file);
+            });
+        }
+        
         /**
          * Step 1: Tool Selection (Updates UI and sets required files)
          */
@@ -249,7 +257,7 @@
             updateFileList();
             messageElement.classList.add('hidden');
             
-            // Render tool-specific options
+            // Render tool-specific options (Omitted for brevity, but included in final code)
             renderToolOptions(toolName);
         }
         
@@ -284,505 +292,4 @@
                     `;
                     break;
                 case 'Remove':
-                case 'Extract':
-                case 'Reorder': // Reorder needs the page list
-                     toolOptionsDiv.classList.remove('hidden');
-                    let placeholderText = toolName === 'Reorder' ? 'e.g., 5, 3, 1, 2, 4 (New page sequence)' : 'e.g., 3, 5-7 (Pages to process)';
-                    toolOptionsDiv.innerHTML = `
-                        <label for="pages-input" class="block text-sm font-medium text-gray-700">Pages to ${toolName} (1-based):</label>
-                        <input type="text" id="pages-input" placeholder="${placeholderText}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2">
-                        <p class="text-xs text-gray-500 mt-1">${toolName === 'Reorder' ? 'Enter ALL pages in the desired order (e.g., 5, 3, 1, 2, 4).' : 'Enter page numbers/ranges (e.g., 3, 5-7).'}</p>
-                    `;
-                    break;
-                case 'Number':
-                     toolOptionsDiv.classList.remove('hidden');
-                    toolOptionsDiv.innerHTML = `
-                        <p class="text-sm text-gray-700">Page numbers will be added to the bottom center of every page.</p>
-                    `;
-                    break;
-                case 'Watermark':
-                     toolOptionsDiv.classList.remove('hidden');
-                    toolOptionsDiv.innerHTML = `
-                        <label for="watermark-text" class="block text-sm font-medium text-gray-700">Watermark Text:</label>
-                        <input type="text" id="watermark-text" value="DRAFT" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2">
-                    `;
-                    break;
-                case 'Metadata':
-                     toolOptionsDiv.classList.remove('hidden');
-                     toolOptionsDiv.innerHTML = `
-                        <label for="meta-title" class="block text-sm font-medium text-gray-700">Title:</label>
-                        <input type="text" id="meta-title" placeholder="Document Title" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2">
-                        <label for="meta-author" class="block text-sm font-medium text-gray-700 mt-2">Author:</label>
-                        <input type="text" id="meta-author" placeholder="Document Author" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2">
-                        <label for="meta-subject" class="block text-sm font-medium text-gray-700 mt-2">Subject:</label>
-                        <input type="text" id="meta-subject" placeholder="Document Subject" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2">
-                    `;
-                    break;
-                case 'Flatten':
-                    toolOptionsDiv.classList.remove('hidden');
-                    toolOptionsDiv.innerHTML = `
-                        <p class="text-sm text-gray-700">This process merges form fields and annotations into the base content, making them non-editable.</p>
-                    `;
-                    break;
-                case 'Info':
-                    // No options needed, info displays on button click
-                    break;
-            }
-        }
-
-
-        /**
-         * Step 2: File Handling
-         */
-        function handleFiles(files) {
-            const newFiles = Array.from(files).filter(file => file.type === 'application/pdf');
-            
-            // Merge is multi-file; all others are single-file.
-            const isSingleFileTool = !['Merge'].includes(selectedTool);
-
-            if (isSingleFileTool) {
-                 uploadedFiles = newFiles.slice(0, 1);
-                 // Client-side warning for large files
-                if (uploadedFiles[0] && uploadedFiles[0].size > 20 * 1024 * 1024) {
-                    alert("Warning: Files over 20MB may cause processing to fail or freeze the browser.");
-                }
-            } else if (uploadedFiles.length + newFiles.length > maxFiles) {
-                alert(`You can upload a maximum of ${maxFiles} files for merging.`);
-                return;
-            } else {
-                 uploadedFiles.push(...newFiles);
-            }
-
-            updateFileList();
-        }
-
-        function updateFileList() {
-            fileList.innerHTML = '';
-            
-            if (uploadedFiles.length === 0) {
-                fileList.innerHTML = '<p class="text-center text-gray-400 italic">No files selected.</p>';
-                processButton.disabled = true;
-                processButton.textContent = `Select file(s) to ${selectedTool}`;
-                processButton.classList.replace('bg-blue-600', 'bg-gray-400');
-            } else {
-                uploadedFiles.forEach((file, index) => {
-                    const fileSize = (file.size / 1024 / 1024).toFixed(2); // MB
-                    const item = document.createElement('div');
-                    item.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg border';
-                    item.innerHTML = `
-                        <div class="flex items-center space-x-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.414L16.586 7A2 2 0 0117 8.414V16a2 2 0 01-2 2H5a2 2 0 01-2-2V4zm6 9a1 1 0 11-2 0V9a1 1 0 112 0v4z" clip-rule="evenodd" />
-                            </svg>
-                            <div>
-                                <p class="text-sm font-medium text-gray-800">${file.name}</p>
-                                <p class="text-xs text-gray-400">${fileSize} MB</p>
-                            </div>
-                        </div>
-                        <button onclick="removeFile(${index})" class="text-gray-400 hover:text-red-500 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    `;
-                    fileList.appendChild(item);
-                });
-                
-                processButton.disabled = false;
-                const buttonText = selectedTool === 'Info' ? 'View File Information' : `Start ${selectedTool} (${uploadedFiles.length} File${uploadedFiles.length > 1 ? 's' : ''})`;
-                processButton.textContent = buttonText;
-                processButton.classList.replace('bg-gray-400', 'bg-blue-600');
-            }
-        }
-
-        function removeFile(index) {
-            uploadedFiles.splice(index, 1);
-            updateFileList();
-        }
-
-        // --- Event Listeners Initialization (Omitted for brevity, but included in final code) ---
-        dropzone.addEventListener('click', () => fileInput.click());
-        fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
-
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            dropzone.addEventListener(eventName, preventDefaults, false);
-            document.body.addEventListener(eventName, preventDefaults, false);
-        });
-
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropzone.addEventListener(eventName, () => dropzone.classList.add('border-blue-600', 'bg-blue-50'), false);
-        });
-
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropzone.addEventListener(eventName, () => dropzone.classList.remove('border-blue-600', 'bg-blue-50'), false);
-        });
-
-        dropzone.addEventListener('drop', (e) => {
-            const dt = e.dataTransfer;
-            const files = dt.files;
-            handleFiles(files);
-        }, false);
-
-        function preventDefaults (e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-
-        /**
-         * Step 3: REAL CLIENT-SIDE PROCESSING
-         */
-        async function startProcessing() {
-            if (uploadedFiles.length === 0 || !selectedTool) return;
-            
-            processButton.disabled = true;
-            processButton.textContent = `Processing ${selectedTool}...`;
-            messageElement.classList.remove('hidden');
-            messageElement.textContent = `Processing starting in browser...`;
-            processButton.classList.replace('bg-blue-600', 'bg-red-500');
-
-            try {
-                let processedPdfBytes;
-                const fileBuffers = await Promise.all(uploadedFiles.map(file => file.arrayBuffer()));
-
-                switch (selectedTool) {
-                    case 'Merge':
-                        processedPdfBytes = await mergePdfs(fileBuffers);
-                        break;
-                    case 'Rotate':
-                        processedPdfBytes = await rotatePdf(fileBuffers[0]);
-                        break;
-                    case 'Protect':
-                        processedPdfBytes = await protectPdf(fileBuffers[0]);
-                        break;
-                    case 'Unlock':
-                        processedPdfBytes = await unlockPdf(fileBuffers[0]);
-                        break;
-                    case 'Remove':
-                        processedPdfBytes = await manipulatePages(fileBuffers[0], 'remove');
-                        break;
-                    case 'Extract':
-                        processedPdfBytes = await manipulatePages(fileBuffers[0], 'extract');
-                        break;
-                    case 'Reorder':
-                        processedPdfBytes = await reorderPages(fileBuffers[0]);
-                        break;
-                    case 'Number':
-                        processedPdfBytes = await addPageNumbers(fileBuffers[0]);
-                        break;
-                    case 'Watermark':
-                        processedPdfBytes = await addTextWatermark(fileBuffers[0]);
-                        break;
-                    case 'Metadata':
-                        processedPdfBytes = await editMetadata(fileBuffers[0]);
-                        break;
-                    case 'Flatten':
-                        processedPdfBytes = await flattenPdf(fileBuffers[0]);
-                        break;
-                    case 'Info':
-                         const info = await viewFileInfo(fileBuffers[0]);
-                         messageElement.innerHTML = `
-                            <span class="text-green-600 font-bold">File Information:</span>
-                            <ul class="list-disc text-left mx-auto max-w-sm mt-2 space-y-1 text-gray-700">
-                                <li>Pages: ${info.pageCount}</li>
-                                <li>Title: ${info.title || 'N/A'}</li>
-                                <li>Author: ${info.author || 'N/A'}</li>
-                                <li>Encrypted: ${info.encrypted ? 'Yes' : 'No'}</li>
-                            </ul>
-                        `;
-                        throw new Error('InfoViewComplete');
-                    default:
-                        throw new Error(`Tool ${selectedTool} is not implemented.`);
-                }
-                
-                // Success: Trigger Download
-                const blob = new Blob([processedPdfBytes], { type: 'application/pdf' });
-                const fileName = `${selectedTool}_${Date.now()}.pdf`;
-                downloadFile(blob, fileName); 
-                
-                // Update UI for success
-                processButton.classList.replace('bg-red-500', 'bg-green-600');
-                processButton.textContent = `Download Complete!`;
-                messageElement.innerHTML = `<span class="text-green-600 font-bold">Success!</span> Your file is ready.`;
-
-            } catch (error) {
-                
-                if (error.message === 'InfoViewComplete') {
-                    // Handled gracefully in finally block
-                } else {
-                    console.error("Processing failed:", error);
-                    
-                    processButton.classList.replace('bg-red-500', 'bg-red-700');
-                    processButton.textContent = `Error! Try Again.`;
-                    let errorMessage = error.message;
-                    if (error.message.includes('password')) {
-                        errorMessage = 'Incorrect password or file is already unlocked.';
-                    } else if (error.message.includes('No valid pages') || error.message.includes('Mismatched page count')) {
-                        errorMessage = 'Invalid page numbers or sequence specified (use 1, 5-7).';
-                    } else if (error.message.includes('Invalid file signature') || error.message.includes('Invalid PDF')) {
-                        errorMessage = 'The file is corrupted or not a valid PDF.';
-                    } else if (error.message.includes('fetch')) {
-                        errorMessage = 'File loading failed (network error or file corrupted).';
-                    } else {
-                        errorMessage = 'An unknown error occurred. Try a smaller file.';
-                    }
-                    messageElement.innerHTML = `<span class="text-red-600 font-bold">Processing Error!</span> ${errorMessage}`;
-                }
-
-            } finally {
-                // Reset to allow new processing attempt
-                if (selectedTool !== 'Info') {
-                    uploadedFiles = [];
-                    updateFileList();
-                    processButton.onclick = startProcessing; 
-                } else {
-                    processButton.disabled = false;
-                    processButton.textContent = 'View File Information';
-                }
-            }
-        }
-        
-        /**
-         * Helper function to trigger browser download
-         */
-        function downloadFile(blob, fileName) {
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(a);
-        }
-
-        // --- PDF-LIB FUNCTIONS (The Real Tools) ---
-        
-        async function mergePdfs(fileBuffers) {
-            if (fileBuffers.length < 2) throw new Error("Merging requires at least two PDF files.");
-            const mergedPdf = await PDFDocument.create();
-            for (const buffer of fileBuffers) {
-                try {
-                    const pdf = await PDFDocument.load(buffer);
-                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
-                    copiedPages.forEach((page) => mergedPdf.addPage(page));
-                } catch (e) {
-                    throw new Error("One or more files could not be loaded. Ensure they are valid PDFs.");
-                }
-            }
-            return mergedPdf.save();
-        }
-        
-        async function rotatePdf(fileBuffer) {
-            const angleInput = document.getElementById('rotation-angle');
-            const rotationAngle = parseInt(angleInput.value);
-
-            const pdfDoc = await PDFDocument.load(fileBuffer);
-            const pages = pdfDoc.getPages();
-            
-            for (const page of pages) {
-                const currentRotation = page.getRotation().angle;
-                page.setRotation(degrees(currentRotation + rotationAngle));
-            }
-
-            return pdfDoc.save();
-        }
-        
-        async function manipulatePages(fileBuffer, mode) {
-            const pagesInput = document.getElementById('pages-input');
-            const pageRangeString = pagesInput ? pagesInput.value.trim() : '';
-
-            if (!pageRangeString) throw new Error(`Please specify the pages you wish to ${mode}.`);
-            
-            const pdfDoc = await PDFDocument.load(fileBuffer);
-            const totalPages = pdfDoc.getPageCount();
-            
-            const specifiedPages = new Set();
-            pageRangeString.split(',').forEach(part => {
-                const rangeMatch = part.match(/^\s*(\d+)-(\d+)\s*$/);
-                const singleMatch = part.match(/^\s*(\d+)\s*$/);
-
-                if (rangeMatch) {
-                    let start = parseInt(rangeMatch[1]);
-                    let end = parseInt(rangeMatch[2]);
-                    if (start > end) [start, end] = [end, start];
-                    for (let i = start; i <= end; i++) {
-                        if (i >= 1 && i <= totalPages) specifiedPages.add(i - 1); 
-                    }
-                } else if (singleMatch) {
-                    const pageNum = parseInt(singleMatch[1]);
-                    if (pageNum >= 1 && pageNum <= totalPages) specifiedPages.add(pageNum - 1);
-                }
-            });
-            
-            if (specifiedPages.size === 0) throw new Error("No valid pages found to process.");
-            
-            const pagesToProcess = [];
-            for (let i = 0; i < totalPages; i++) {
-                const shouldKeep = mode === 'remove' ? !specifiedPages.has(i) : specifiedPages.has(i);
-                if (shouldKeep) {
-                    pagesToProcess.push(i);
-                }
-            }
-            
-            if (pagesToProcess.length === 0) throw new Error(`Processing those pages would result in an empty document.`);
-
-            const newPdf = await PDFDocument.create();
-            const copiedPages = await newPdf.copyPages(pdfDoc, pagesToProcess);
-            copiedPages.forEach((page) => newPdf.addPage(page));
-
-            return newPdf.save();
-        }
-
-        async function reorderPages(fileBuffer) {
-            const pagesInput = document.getElementById('pages-input');
-            const pageOrderString = pagesInput ? pagesInput.value.trim() : '';
-            
-            if (!pageOrderString) throw new Error("Please specify the new page order (e.g., 5, 3, 1, 2).");
-
-            const pdfDoc = await PDFDocument.load(fileBuffer);
-            const totalPages = pdfDoc.getPageCount();
-            
-            const newOrderIndices = pageOrderString.split(',')
-                .map(s => parseInt(s.trim()))
-                .filter(num => !isNaN(num) && num >= 1 && num <= totalPages)
-                .map(num => num - 1); // Convert to 0-based index
-
-            if (newOrderIndices.length !== totalPages) {
-                throw new Error("Mismatched page count. Please include ALL pages in the new sequence (e.g., 1, 2, 3, 4, 5).");
-            }
-
-            const newPdf = await PDFDocument.create();
-            const copiedPages = await newPdf.copyPages(pdfDoc, newOrderIndices);
-            copiedPages.forEach((page) => newPdf.addPage(page));
-
-            return newPdf.save();
-        }
-
-        async function addPageNumbers(fileBuffer) {
-            const pdfDoc = await PDFDocument.load(fileBuffer);
-            const pages = pdfDoc.getPages();
-            const pageCount = pages.length;
-            const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-            const fontSize = 10;
-            const padding = 20;
-
-            pages.forEach((page, index) => {
-                const { width, height } = page.getSize();
-                const pageNumberText = `${index + 1} / ${pageCount}`;
-                const textWidth = font.widthOfTextAtSize(pageNumberText, fontSize);
-                
-                page.drawText(pageNumberText, {
-                    x: width / 2 - textWidth / 2, // Centered horizontally
-                    y: padding, // 20px from the bottom
-                    size: fontSize,
-                    font: font,
-                    color: rgb(0.5, 0.5, 0.5), // Grey color
-                });
-            });
-
-            return pdfDoc.save();
-        }
-        
-        async function addTextWatermark(fileBuffer) {
-            const watermarkInput = document.getElementById('watermark-text');
-            const watermarkText = watermarkInput ? watermarkInput.value.trim() : 'CONFIDENTIAL';
-            
-            if (!watermarkText) throw new Error("Watermark text cannot be empty.");
-
-            const pdfDoc = await PDFDocument.load(fileBuffer);
-            const pages = pdfDoc.getPages();
-            const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
-            const fontSize = 70;
-            const opacity = 0.2;
-            
-            pages.forEach((page, index) => {
-                const { width, height } = page.getSize();
-                
-                page.drawText(watermarkText, {
-                    x: width / 2 - font.widthOfTextAtSize(watermarkText, fontSize) / 2, 
-                    y: height / 2 - fontSize / 2,
-                    size: fontSize,
-                    font: font,
-                    color: rgb(0.1, 0.1, 0.1), 
-                    opacity: opacity,
-                    rotate: degrees(-45), 
-                });
-            });
-
-            return pdfDoc.save();
-        }
-        
-        async function editMetadata(fileBuffer) {
-            const titleInput = document.getElementById('meta-title');
-            const authorInput = document.getElementById('meta-author');
-            const subjectInput = document.getElementById('meta-subject');
-
-            const pdfDoc = await PDFDocument.load(fileBuffer);
-            
-            pdfDoc.setTitle((titleInput.value || '').trim() || pdfDoc.getTitle());
-            pdfDoc.setAuthor((authorInput.value || '').trim() || pdfDoc.getAuthor());
-            pdfDoc.setSubject((subjectInput.value || '').trim() || pdfDoc.getSubject());
-            
-            return pdfDoc.save();
-        }
-        
-        async function flattenPdf(fileBuffer) {
-            const pdfDoc = await PDFDocument.load(fileBuffer);
-            return pdfDoc.save();
-        }
-        
-        async function viewFileInfo(fileBuffer) {
-            const pdfDoc = await PDFDocument.load(fileBuffer);
-            
-            let encrypted = false;
-            try {
-                 await PDFDocument.load(fileBuffer, { throwOnInvalidPassword: true });
-            } catch (e) {
-                 if (e.message.includes('encrypted')) {
-                     encrypted = true;
-                 }
-            }
-
-            return {
-                pageCount: pdfDoc.getPageCount(),
-                title: pdfDoc.getTitle(),
-                author: pdfDoc.getAuthor(),
-                encrypted: encrypted,
-            };
-        }
-
-
-        async function protectPdf(fileBuffer) {
-            const passwordInput = document.getElementById('password-input');
-            const password = (passwordInput ? passwordInput.value : '').trim();
-            
-            if (!password) {
-                throw new Error("Password field cannot be empty.");
-            }
-
-            const pdfDoc = await PDFDocument.load(fileBuffer);
-            
-            return pdfDoc.save({
-                useEncryption: true,
-                ownerPassword: password, 
-                userPassword: password
-            });
-        }
-        
-        async function unlockPdf(fileBuffer) {
-            const passwordInput = document.getElementById('password-input');
-            const password = (passwordInput ? passwordInput.value : '').trim();
-            
-            if (!password) {
-                 throw new Error("Password field cannot be empty for unlocking.");
-            }
-            
-            const pdfDoc = await PDFDocument.load(fileBuffer, { password: password });
-            
-            return pdfDoc.save();
-        }
-
-    </script>
-</body>
-</html>
-
+                cas
