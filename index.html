@@ -143,7 +143,7 @@
                 
                  <!-- 9. Flatten PDF (Pink) -->
                 <div data-tool="Flatten" class="tool-card bg-white p-4 rounded-xl shadow-lg border-t-4 border-pink-500 flex flex-col items-center text-center" onclick="selectTool('Flatten')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm10 2a1 1 0 100 2h-4a1 1 0 100 2h4a1 1 0 100 2h-4a1 1 0 100 2h4a1 1 0 100 2h-4a1 1 0 100 2h4a1 1 0 100 2H6a1 1 0 00-1 1V6a1 1 0 001-1h8z" clip-rule="evenodd" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-500 mb-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm10 2a1 1 0 100 2h-4a1 1 0 100 2h4a1 1 0 100 2h-4a1 1 0 100 2h4a1 1 0 100 2h-4a1 1 0 100 2H6a1 1 0 00-1 1V6a1 1 0 001-1h8z" clip-rule="evenodd" /></svg>
                     <h3 class="text-sm font-semibold text-gray-800">Flatten</h3>
                     <p class="text-gray-500 text-xs mt-1">Merge forms/annotations.</p>
                 </div>
@@ -287,4 +287,4 @@
                 case 'Reorder': // Reorder needs the page list
                      toolOptionsDiv.classList.remove('hidden');
                     let placeholderText = toolName === 'Reorder' ? 'e.g., 5, 3, 1, 2, 4 (New page sequence)' : 'e.g., 3, 5-7 (Pages to process)';
-                    toolOptionsDiv.innerHT
+                    toolOptionsDiv.innerHTML = `
