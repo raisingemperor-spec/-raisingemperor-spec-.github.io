@@ -526,7 +526,7 @@
                 
                 // 4. Rebind click to open Data URL in a new tab (the unblockable method)
                 processButton.onclick = function() {
-                    // Open the file in a new tab, forcing the browser's native PDF viewer to handle the download
+                    // This method opens the file in a new tab, forcing the browser's native viewer to offer the download.
                     window.open(dataUrl, '_blank'); 
                     
                     // Display final instruction
