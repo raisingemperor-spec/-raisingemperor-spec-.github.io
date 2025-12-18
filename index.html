@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CalcForge - Free Professional Finance & Health Calculators</title>
+    <title>CalcForge - Professional Utility Calculators</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
         .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .tab-content.active { display: block; animation: fadeIn 0.2s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .active-tab { border-bottom: 4px solid #0f172a; color: #0f172a; background-color: #f1f5f9; }
-        .ad-placeholder { background: #f1f5f9; border: 2px dashed #cbd5e1; min-height: 90px; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 0.8rem; margin: 20px 0; border-radius: 12px; text-align: center; padding: 10px; }
-        ::-webkit-scrollbar { height: 4px; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
     </style>
 </head>
-<body class="text-slate-900 leading-relaxed">
+<body class="text-slate-900">
 
     <!-- Navigation -->
     <nav class="bg-white border-b sticky top-0 z-50">
@@ -28,255 +26,211 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                     </svg>
                 </div>
-                <span class="text-2xl font-black tracking-tight text-slate-900">CalcForge</span>
+                <span class="text-2xl font-black text-slate-900">CalcForge</span>
             </div>
-            <div class="hidden sm:flex space-x-6 text-sm font-bold text-slate-500 uppercase tracking-widest">
-                <a href="privacy.html" class="hover:text-slate-900 transition">Privacy</a>
-                <a href="contact.html" class="hover:text-slate-900 transition">Contact</a>
+            <div class="space-x-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                <a href="privacy.html" class="hover:text-slate-900">Privacy</a>
+                <a href="contact.html" class="hover:text-slate-900">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-4 py-12">
-        <header class="text-center mb-12">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Smart Logic. <span class="text-slate-600">Better Living.</span></h2>
-            <p class="text-slate-500 text-lg max-w-2xl mx-auto">CalcForge provides instant, server-side accuracy for your financial planning and health tracking.</p>
-        </header>
-
-        <!-- Top Ad Placement -->
-        <div class="ad-placeholder">
-            <div>
-                <p class="font-bold">GOOGLE ADSENSE TOP BANNER</p>
-                <p class="text-xs">Responsive Display Ad will appear here</p>
-            </div>
+        <!-- AdSense Slot (Top) -->
+        <div class="bg-slate-100 border-2 border-dashed border-slate-200 h-24 mb-10 rounded-xl flex items-center justify-center text-slate-400 text-xs font-bold">
+            AD CONTENT WILL APPEAR HERE
         </div>
 
-        <!-- Tool Selection (Tabs) -->
-        <div class="bg-white rounded-2xl shadow-sm border p-1 flex overflow-x-auto mb-8 no-scrollbar scroll-smooth">
-            <button onclick="openTab(event, 'loan')" class="tab-link active-tab flex-1 px-8 py-4 whitespace-nowrap font-bold text-sm transition-all rounded-xl">LOAN EMI</button>
-            <button onclick="openTab(event, 'bmi')" class="tab-link flex-1 px-8 py-4 whitespace-nowrap font-bold text-sm transition-all rounded-xl">BMI HEALTH</button>
-            <button onclick="openTab(event, 'sip')" class="tab-link flex-1 px-8 py-4 whitespace-nowrap font-bold text-sm transition-all rounded-xl">SIP WEALTH</button>
-            <button onclick="openTab(event, 'age')" class="tab-link flex-1 px-8 py-4 whitespace-nowrap font-bold text-sm transition-all rounded-xl">AGE FINDER</button>
+        <!-- Tool Selection -->
+        <div class="bg-white rounded-2xl shadow-sm border p-1 flex overflow-x-auto mb-8 no-scrollbar">
+            <button onclick="openTab(event, 'loan')" class="tab-link active-tab flex-1 px-6 py-4 whitespace-nowrap font-bold text-sm rounded-xl">LOAN EMI</button>
+            <button onclick="openTab(event, 'bmi')" class="tab-link flex-1 px-6 py-4 whitespace-nowrap font-bold text-sm rounded-xl">BMI HEALTH</button>
+            <button onclick="openTab(event, 'sip')" class="tab-link flex-1 px-6 py-4 whitespace-nowrap font-bold text-sm rounded-xl">SIP WEALTH</button>
+            <button onclick="openTab(event, 'age')" class="tab-link flex-1 px-6 py-4 whitespace-nowrap font-bold text-sm rounded-xl">AGE FINDER</button>
         </div>
 
         <!-- TOOL 1: LOAN EMI -->
-        <div id="loan" class="tab-content active bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
-            <div class="p-8 md:p-12">
-                <div class="flex items-center space-x-3 mb-8">
-                    <div class="bg-slate-100 p-3 rounded-2xl text-slate-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <div id="loan" class="tab-content active bg-white rounded-3xl shadow-xl border border-slate-100 p-8">
+            <h3 class="text-2xl font-bold mb-8">Loan EMI Calculator</h3>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-black text-slate-400 uppercase mb-2">Loan Amount ($)</label>
+                        <input type="number" id="l-amount" value="50000" oninput="calcLoan()" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-xl font-bold">
                     </div>
-                    <h3 class="text-2xl font-bold">Loan EMI Calculator</h3>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-bold text-slate-600 mb-2 uppercase">Loan Amount ($)</label>
-                            <input type="number" id="l-amount" value="50000" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-lg font-bold transition">
+                            <label class="block text-xs font-black text-slate-400 uppercase mb-2">Interest %</label>
+                            <input type="number" id="l-rate" value="7.5" step="0.1" oninput="calcLoan()" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-xl font-bold">
                         </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-bold text-slate-600 mb-2 uppercase">Interest (%)</label>
-                                <input type="number" id="l-rate" value="7.5" step="0.1" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-lg font-bold transition">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-bold text-slate-600 mb-2 uppercase">Years</label>
-                                <input type="number" id="l-years" value="5" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-lg font-bold transition">
-                            </div>
-                        </div>
-                        <button onclick="calcLoan()" class="w-full bg-slate-900 text-white font-black py-4 rounded-2xl hover:bg-slate-800 shadow-lg shadow-slate-200 transition-all uppercase tracking-widest">Calculate EMI</button>
-                    </div>
-                    
-                    <div class="bg-slate-900 rounded-3xl p-8 text-white flex flex-col justify-center items-center relative overflow-hidden">
-                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-2 relative z-10">Monthly Payment</p>
-                        <p id="l-result" class="text-5xl font-black mb-6 relative z-10">$1,001.90</p>
-                        <div class="w-full pt-6 border-t border-slate-700 flex justify-between text-sm relative z-10">
-                            <span class="text-slate-400">Total Interest:</span>
-                            <span id="l-interest" class="font-bold">$10,114</span>
+                        <div>
+                            <label class="block text-xs font-black text-slate-400 uppercase mb-2">Years</label>
+                            <input type="number" id="l-years" value="5" oninput="calcLoan()" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-xl font-bold">
                         </div>
                     </div>
                 </div>
-
-                <div class="mt-12 prose prose-slate max-w-none border-t pt-8">
-                    <h4 class="text-lg font-bold mb-2 text-slate-900">How CalcForge Calculates EMIs</h4>
-                    <p class="text-slate-500 text-sm">Equated Monthly Installment (EMI) is the fixed amount paid by a borrower to a lender at a specified date each month. CalcForge uses a reducing balance algorithm to help you plan mortgages, car loans, and personal credit repayments with absolute precision.</p>
+                <div class="bg-slate-900 rounded-3xl p-8 text-white flex flex-col justify-center text-center">
+                    <p class="text-slate-400 text-xs font-bold uppercase mb-2">Monthly EMI</p>
+                    <p id="l-result" class="text-5xl font-black">$1,001.90</p>
+                    <p class="text-slate-500 text-xs mt-6">Total Interest: <span id="l-interest" class="text-white font-bold">$10,114</span></p>
                 </div>
             </div>
         </div>
 
         <!-- TOOL 2: BMI -->
-        <div id="bmi" class="tab-content bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
-            <div class="p-8 md:p-12">
-                <div class="flex items-center space-x-3 mb-8">
-                    <div class="bg-slate-100 p-3 rounded-2xl text-slate-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+        <div id="bmi" class="tab-content bg-white rounded-3xl shadow-xl border border-slate-100 p-8">
+            <h3 class="text-2xl font-bold mb-8">BMI Health Analyzer</h3>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-black text-slate-400 uppercase mb-2">Weight (kg)</label>
+                        <input type="number" id="b-weight" value="70" oninput="calcBMI()" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-xl font-bold">
                     </div>
-                    <h3 class="text-2xl font-bold">BMI Health Analyzer</h3>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-bold text-slate-600 mb-2 uppercase">Weight (kg)</label>
-                            <input type="number" id="b-weight" value="70" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-lg font-bold transition">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-600 mb-2 uppercase">Height (cm)</label>
-                            <input type="number" id="b-height" value="175" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-lg font-bold transition">
-                        </div>
-                        <button onclick="calcBMI()" class="w-full bg-slate-900 text-white font-black py-4 rounded-2xl hover:bg-slate-800 shadow-lg shadow-slate-200 transition-all uppercase tracking-widest">Analyze Body Mass</button>
-                    </div>
-
-                    <div id="b-card" class="bg-slate-100 rounded-3xl p-8 text-slate-900 flex flex-col justify-center items-center transition-all border-2 border-transparent">
-                        <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-2">BMI Score</p>
-                        <p id="b-result" class="text-6xl font-black mb-2">22.9</p>
-                        <div class="bg-slate-900 text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-widest" id="b-status">Normal</div>
+                    <div>
+                        <label class="block text-xs font-black text-slate-400 uppercase mb-2">Height (cm)</label>
+                        <input type="number" id="b-height" value="175" oninput="calcBMI()" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-xl font-bold">
                     </div>
                 </div>
-
-                <div class="mt-12 border-t pt-8">
-                     <h4 class="text-lg font-bold mb-2 text-slate-900">Understanding Your Health Metric</h4>
-                     <p class="text-slate-500 text-sm">Body Mass Index (BMI) is a value derived from the mass and height of a person. It is defined as the body mass divided by the square of the body height. CalcForge categorizes your result based on World Health Organization (WHO) standards.</p>
+                <div id="b-card" class="bg-white border-4 border-slate-900 rounded-3xl p-8 flex flex-col justify-center text-center">
+                    <p class="text-slate-500 text-xs font-bold uppercase mb-2">BMI Score</p>
+                    <p id="b-result" class="text-6xl font-black">22.9</p>
+                    <p id="b-status" class="mt-4 font-black uppercase text-sm tracking-tighter">Normal Weight</p>
                 </div>
             </div>
         </div>
 
         <!-- TOOL 3: SIP -->
-        <div id="sip" class="tab-content bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
-            <div class="p-8 md:p-12">
-                <div class="flex items-center space-x-3 mb-8">
-                    <div class="bg-slate-100 p-3 rounded-2xl text-slate-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold">SIP Investment Planner</h3>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-bold text-slate-600 mb-2 uppercase">Monthly Deposit ($)</label>
-                            <input type="number" id="s-amount" value="500" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-lg font-bold transition">
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-bold text-slate-600 mb-2 uppercase">Return (%)</label>
-                                <input type="number" id="s-rate" value="12" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-lg font-bold transition">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-bold text-slate-600 mb-2 uppercase">Years</label>
-                                <input type="number" id="s-years" value="10" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-lg font-bold transition">
-                            </div>
-                        </div>
-                        <button onclick="calcSIP()" class="w-full bg-slate-900 text-white font-black py-4 rounded-2xl hover:bg-slate-800 shadow-lg shadow-slate-200 transition-all uppercase tracking-widest">Project Growth</button>
-                    </div>
-
-                    <div class="bg-slate-900 rounded-3xl p-8 text-white flex flex-col justify-center items-center">
-                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-2">Maturity Value</p>
-                        <p id="s-result" class="text-5xl font-black mb-6">$116,169</p>
-                        <div class="w-full pt-6 border-t border-slate-700 flex justify-between text-sm">
-                            <span class="text-slate-400">Total Contributed:</span>
-                            <span id="s-invested" class="font-bold">$60,000</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TOOL 4: AGE FINDER -->
-        <div id="age" class="tab-content bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
-            <div class="p-8 md:p-12 text-center">
-                <div class="inline-flex items-center space-x-3 mb-8 mx-auto">
-                    <div class="bg-slate-100 p-3 rounded-2xl text-slate-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v12a2 2 0 002 2z" /></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold">Age Finder</h3>
-                </div>
-
-                <div class="max-w-md mx-auto space-y-8 text-left">
+        <div id="sip" class="tab-content bg-white rounded-3xl shadow-xl border border-slate-100 p-8">
+            <h3 class="text-2xl font-bold mb-8">SIP Investment Planner</h3>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="space-y-6">
                     <div>
-                        <label class="block text-sm font-bold text-slate-600 mb-2 uppercase text-center">Enter Date of Birth</label>
-                        <input type="date" id="a-date" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-3xl focus:border-slate-900 outline-none text-xl font-bold transition">
+                        <label class="block text-xs font-black text-slate-400 uppercase mb-2">Monthly Deposit ($)</label>
+                        <input type="number" id="s-amount" value="500" oninput="calcSIP()" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-xl font-bold">
                     </div>
-                    <button onclick="calcAge()" class="w-full bg-slate-900 text-white font-black py-5 rounded-3xl hover:bg-slate-800 shadow-lg transition-all uppercase tracking-widest">Calculate Exact Age</button>
-                    
-                    <div id="a-result-box" class="hidden bg-slate-50 border-2 border-slate-200 rounded-3xl p-8 text-center">
-                        <p class="text-slate-500 text-xs font-black uppercase tracking-widest mb-2">Age Milestone</p>
-                        <p id="a-result" class="text-2xl font-black text-slate-900"></p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-black text-slate-400 uppercase mb-2">Return %</label>
+                            <input type="number" id="s-rate" value="12" oninput="calcSIP()" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-xl font-bold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-slate-400 uppercase mb-2">Years</label>
+                            <input type="number" id="s-years" value="10" oninput="calcSIP()" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-xl font-bold">
+                        </div>
                     </div>
+                </div>
+                <div class="bg-slate-900 rounded-3xl p-8 text-white flex flex-col justify-center text-center">
+                    <p class="text-slate-400 text-xs font-bold uppercase mb-2">Future Wealth</p>
+                    <p id="s-result" class="text-5xl font-black">$116,169</p>
+                    <p class="text-slate-500 text-xs mt-6">Total Invested: <span id="s-invested" class="text-white font-bold">$60,000</span></p>
                 </div>
             </div>
         </div>
 
-        <!-- Bottom Ad Placement -->
-        <div class="ad-placeholder mt-12">
-            <div>
-                <p class="font-bold uppercase tracking-widest">In-Content Native Ad</p>
-                <p class="text-xs text-slate-400">Google AdSense will automatically place contextually relevant ads here</p>
+        <!-- TOOL 4: AGE -->
+        <div id="age" class="tab-content bg-white rounded-3xl shadow-xl border border-slate-100 p-8 text-center">
+            <h3 class="text-2xl font-bold mb-8">Age Finder</h3>
+            <div class="max-w-sm mx-auto space-y-6">
+                <div>
+                    <label class="block text-xs font-black text-slate-400 uppercase mb-2">Date of Birth</label>
+                    <input type="date" id="a-date" oninput="calcAge()" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-slate-900 outline-none text-xl font-bold">
+                </div>
+                <div id="a-result-box" class="hidden p-8 bg-slate-50 rounded-3xl border-2 border-slate-100">
+                    <p class="text-slate-400 text-xs font-bold uppercase mb-2">Calculated Age</p>
+                    <p id="a-result" class="text-2xl font-black"></p>
+                </div>
             </div>
         </div>
 
-        <!-- Content Section for SEO/AdSense Value -->
-        <section class="mt-20 space-y-12">
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="bg-white p-8 rounded-3xl shadow-sm border">
-                    <h4 class="text-xl font-bold mb-4 text-slate-900">Why CalcForge?</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">CalcForge is built for speed and precision. Unlike many utility sites that require complex server requests, our calculations are powered by client-side logic. This means your private data never leaves your browser, ensuring a 100% private and lightning-fast user experience.</p>
-                </div>
-                <div class="bg-white p-8 rounded-3xl shadow-sm border">
-                    <h4 class="text-xl font-bold mb-4 text-slate-900">Data Integrity</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">Our algorithms are calibrated against international financial standards. Whether you are budgeting for a new home or tracking your fitness journey, CalcForge offers a professional-grade suite that you can rely on for daily decision making.</p>
-                </div>
-            </div>
-        </section>
+        <!-- AdSense Slot (Bottom) -->
+        <div class="bg-slate-100 border-2 border-dashed border-slate-200 h-24 mt-12 rounded-xl flex items-center justify-center text-slate-400 text-xs font-bold">
+            BOTTOM AD PLACEMENT
+        </div>
     </main>
 
-    <footer class="bg-slate-900 text-slate-500 py-16 mt-20">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
-                <div class="text-white font-black text-2xl mb-6 md:mb-0">CalcForge</div>
-                <div class="flex space-x-8 text-xs font-bold uppercase tracking-widest">
-                    <a href="index.html" class="hover:text-white transition">Home</a>
-                    <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
-                    <a href="contact.html" class="hover:text-white transition">Contact Us</a>
-                </div>
-            </div>
-            <div class="border-t border-slate-800 pt-8 text-center text-xs">
-                &copy; 2025 CalcForge. All rights reserved. Precision Utility Calculator Suite.
-            </div>
-        </div>
+    <footer class="bg-white border-t py-12 mt-20 text-center">
+        <p class="text-slate-900 font-black text-xl mb-2">CalcForge</p>
+        <p class="text-slate-400 text-sm">© 2025 Precision Utility Calculator Suite.</p>
     </footer>
 
     <script>
+        // Tab System
         function openTab(evt, tabName) {
-            let i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-            }
-            tablinks = document.getElementsByClassName("tab-link");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active-tab");
-            }
+            let i, content, links;
+            content = document.getElementsByClassName("tab-content");
+            for (i = 0; i < content.length; i++) content[i].classList.remove("active");
+            links = document.getElementsByClassName("tab-link");
+            for (i = 0; i < links.length; i++) links[i].classList.remove("active-tab");
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active-tab");
         }
 
+        // 1. Loan Logic
         function calcLoan() {
-            const p = parseFloat(document.getElementById('l-amount').value);
-            const r = parseFloat(document.getElementById('l-rate').value) / 12 / 100;
-            const n = parseFloat(document.getElementById('l-years').value) * 12;
-            const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-            document.getElementById('l-result').innerText = "$" + emi.toLocaleString(undefined, {maximumFractionDigits: 2});
-            document.getElementById('l-interest').innerText = "$" + (Math.round((emi * n) - p)).toLocaleString();
+            const p = parseFloat(document.getElementById('l-amount').value) || 0;
+            const r = (parseFloat(document.getElementById('l-rate').value) || 0) / 12 / 100;
+            const n = (parseFloat(document.getElementById('l-years').value) || 0) * 12;
+            
+            if (p > 0 && r > 0 && n > 0) {
+                const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+                document.getElementById('l-result').innerText = "$" + emi.toLocaleString(undefined, {maximumFractionDigits: 2});
+                document.getElementById('l-interest').innerText = "$" + Math.round((emi * n) - p).toLocaleString();
+            }
         }
 
+        // 2. BMI Logic
         function calcBMI() {
-            const w = parseFloat(document.getElementById('b-weight').value);
-            const h = parseFloat(document.getElementById('b-height').value) / 100;
-            const bmi = (w / (h * h)).toFixed(1);
-            document.getElementById('b-result').innerText = bmi;
-            let status = "Normal";
-            let color = "bg-white border-slate-900";
-            if(bmi < 18.5) { status = "Under
+            const w = parseFloat(document.getElementById('b-weight').value) || 0;
+            const h = (parseFloat(document.getElementById('b-height').value) || 0) / 100;
+            
+            if (w > 0 && h > 0) {
+                const bmi = (w / (h * h)).toFixed(1);
+                document.getElementById('b-result').innerText = bmi;
+                let status = "Normal Weight";
+                let bg = "bg-white";
+                if(bmi < 18.5) { status = "Underweight"; bg = "bg-yellow-50"; }
+                else if(bmi > 25 && bmi < 29.9) { status = "Overweight"; bg = "bg-orange-50"; }
+                else if(bmi >= 30) { status = "Obese"; bg = "bg-red-50"; }
+                document.getElementById('b-status').innerText = status;
+                document.getElementById('b-card').className = bg + " border-4 border-slate-900 rounded-3xl p-8 flex flex-col justify-center text-center transition-all";
+            }
+        }
+
+        // 3. SIP Logic
+        function calcSIP() {
+            const m = parseFloat(document.getElementById('s-amount').value) || 0;
+            const r = (parseFloat(document.getElementById('s-rate').value) || 0) / 12 / 100;
+            const n = (parseFloat(document.getElementById('s-years').value) || 0) * 12;
+
+            if (m > 0 && r > 0 && n > 0) {
+                const total = m * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+                document.getElementById('s-result').innerText = "$" + Math.round(total).toLocaleString();
+                document.getElementById('s-invested').innerText = "$" + (m * n).toLocaleString();
+            }
+        }
+
+        // 4. Age Logic
+        function calcAge() {
+            const dobVal = document.getElementById('a-date').value;
+            if(!dobVal) return;
+            const dob = new Date(dobVal);
+            const now = new Date();
+            let years = now.getFullYear() - dob.getFullYear();
+            let months = now.getMonth() - dob.getMonth();
+            if (months < 0 || (months === 0 && now.getDate() < dob.getDate())) {
+                years--;
+            }
+            document.getElementById('a-result-box').classList.remove('hidden');
+            document.getElementById('a-result').innerText = years + " Years Old";
+        }
+        
+        // Initial Run
+        window.onload = function() {
+            calcLoan();
+            calcBMI();
+            calcSIP();
+        };
+    </script>
+</body>
+</html>
+
