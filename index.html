@@ -3,229 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CalcForge - Free Ultimate Utility & Finance Portal</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>CalcForge - 8 Pro Utility Calculators & Financial Guides</title>
     
-    <!-- 🛑 ADSENSE CODE: PASTE YOUR SCRIPT BELOW THIS LINE 🛑 -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4813365942531906"
-     crossorigin="anonymous"></script>
+    <!-- 🛑 ADSENSE CODE: PASTE YOUR SCRIPT HERE 🛑 -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        .active-tab { background-color: #0f172a !important; color: white !important; border-color: #0f172a !important; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-active { background-color: #0f172a !important; color: white !important; border-color: #0f172a !important; transform: scale(1.05); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .card-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .card-dark { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        input { font-size: 16px !important; } /* Prevents mobile zoom */
     </style>
 </head>
 <body class="text-slate-900">
 
-    <!-- Header / Navigation -->
+    <!-- Navbar -->
     <nav class="bg-white border-b py-4 px-6 sticky top-0 z-50 shadow-sm">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="bg-slate-900 p-2 rounded-xl">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
                 </div>
-                <span class="text-2xl font-extrabold tracking-tighter text-slate-900">CalcForge</span>
+                <span class="text-2xl font-black tracking-tighter">CalcForge</span>
             </div>
-            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="#tools" class="hover:text-slate-900 transition">Calculators</a>
-                <a href="#learn" class="hover:text-slate-900 transition">Learning Hub</a>
+            <div class="hidden md:flex space-x-8 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                <a href="#tools" class="hover:text-slate-900 transition">All Tools</a>
+                <a href="#articles" class="hover:text-slate-900 transition">Education</a>
                 <a href="privacy.html" class="hover:text-slate-900 transition">Privacy</a>
             </div>
-            <a href="#tools" class="bg-slate-900 text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest md:hidden">Tools</a>
+            <a href="contact.html" class="bg-slate-100 text-slate-600 px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 transition">Support</a>
         </div>
     </nav>
 
     <main class="max-w-6xl mx-auto px-4 py-12">
         
-        <!-- Hero Section -->
+        <!-- Hero -->
         <header class="text-center mb-16">
-            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight tracking-tight">The Global Forge for <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-slate-900">Precision Utilities.</span></h1>
-            <p class="text-slate-500 text-lg max-w-2xl mx-auto mb-8">Empowering millions with 100% private, server-grade calculations for wealth, health, and daily productivity.</p>
-            <div class="flex justify-center space-x-4">
-                <div class="flex items-center space-x-1 text-[10px] font-bold text-green-600 uppercase border border-green-200 bg-green-50 px-3 py-1 rounded-full">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    <span>100% Private</span>
-                </div>
-                <div class="flex items-center space-x-1 text-[10px] font-bold text-blue-600 uppercase border border-blue-200 bg-blue-50 px-3 py-1 rounded-full">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    <span>Secure Math</span>
-                </div>
-            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-tight">Master Every Number <br>with <span class="text-blue-600">Pure Precision.</span></h1>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto">Instant, private, and professional calculators for your wealth, health, and life. No data tracking, no limits.</p>
         </header>
 
-        <!-- Top Ad Placeholder -->
-        <div class="bg-slate-100 border-2 border-dashed border-slate-200 h-28 mb-16 rounded-3xl flex items-center justify-center text-slate-400 text-xs font-bold uppercase tracking-widest">
-            AdSense Responsive Display Ad
-        </div>
-
-        <!-- TOOLS PORTAL -->
-        <div id="tools" class="mb-24">
-            <h2 class="text-2xl font-black mb-8 flex items-center">
-                <span class="bg-slate-900 text-white w-8 h-8 rounded-lg flex items-center justify-center mr-3 text-sm">1</span>
-                Select Your Utility
-            </h2>
-            
-            <!-- Tool Tabs -->
-            <div class="flex space-x-2 overflow-x-auto no-scrollbar pb-4 mb-8">
-                <button onclick="tab('loan')" id="btn-loan" class="tool-tab active-tab px-6 py-4 rounded-2xl border-2 font-bold text-xs whitespace-nowrap transition-all shadow-sm">LOAN EMI</button>
-                <button onclick="tab('bmi')" id="btn-bmi" class="tool-tab px-6 py-4 rounded-2xl border-2 font-bold text-xs whitespace-nowrap transition-all text-slate-500 bg-white">BMI HEALTH</button>
-                <button onclick="tab('sip')" id="btn-sip" class="tool-tab px-6 py-4 rounded-2xl border-2 font-bold text-xs whitespace-nowrap transition-all text-slate-500 bg-white">SIP WEALTH</button>
-                <button onclick="tab('disc')" id="btn-disc" class="tool-tab px-6 py-4 rounded-2xl border-2 font-bold text-xs whitespace-nowrap transition-all text-slate-500 bg-white">DISCOUNT %</button>
-                <button onclick="tab('fuel')" id="btn-fuel" class="tool-tab px-6 py-4 rounded-2xl border-2 font-bold text-xs whitespace-nowrap transition-all text-slate-500 bg-white">FUEL COST</button>
-                <button onclick="tab('tip')" id="btn-tip" class="tool-tab px-6 py-4 rounded-2xl border-2 font-bold text-xs whitespace-nowrap transition-all text-slate-500 bg-white">TIP SPLIT</button>
-                <button onclick="tab('age')" id="btn-age" class="tool-tab px-6 py-4 rounded-2xl border-2 font-bold text-xs whitespace-nowrap transition-all text-slate-500 bg-white">AGE FINDER</button>
-                <button onclick="tab('comp')" id="btn-comp" class="tool-tab px-6 py-4 rounded-2xl border-2 font-bold text-xs whitespace-nowrap transition-all text-slate-500 bg-white">COMPOUNDING</button>
+        <!-- Tool Selection Portal -->
+        <div id="tools" class="mb-20">
+            <div class="flex space-x-2 overflow-x-auto no-scrollbar pb-6 mb-8 snap-x">
+                <button onclick="st('loan')" id="b-loan" class="t-btn btn-active px-6 py-4 rounded-2xl border-2 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap transition-all shadow-sm snap-start">Loan EMI</button>
+                <button onclick="st('bmi')" id="b-bmi" class="t-btn px-6 py-4 rounded-2xl border-2 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap transition-all text-slate-500 bg-white snap-start">BMI Health</button>
+                <button onclick="st('sip')" id="b-sip" class="t-btn px-6 py-4 rounded-2xl border-2 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap transition-all text-slate-500 bg-white snap-start">SIP Wealth</button>
+                <button onclick="st('disc')" id="b-disc" class="t-btn px-6 py-4 rounded-2xl border-2 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap transition-all text-slate-500 bg-white snap-start">Discount %</button>
+                <button onclick="st('fuel')" id="b-fuel" class="t-btn px-6 py-4 rounded-2xl border-2 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap transition-all text-slate-500 bg-white snap-start">Fuel Cost</button>
+                <button onclick="st('tip')" id="b-tip" class="t-btn px-6 py-4 rounded-2xl border-2 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap transition-all text-slate-500 bg-white snap-start">Tip Split</button>
+                <button onclick="st('age')" id="b-age" class="t-btn px-6 py-4 rounded-2xl border-2 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap transition-all text-slate-500 bg-white snap-start">Age Finder</button>
+                <button onclick="st('comp')" id="b-comp" class="t-btn px-6 py-4 rounded-2xl border-2 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap transition-all text-slate-500 bg-white snap-start">Compound</button>
             </div>
 
-            <!-- TOOL PANES -->
+            <!-- Tool Content Area -->
             <div class="bg-white rounded-[2.5rem] p-6 md:p-12 shadow-2xl border border-slate-100 min-h-[450px]">
                 
-                <!-- Loan EMI -->
-                <div id="loan" class="tab-content active">
+                <!-- 1. Loan EMI -->
+                <div id="p-loan" class="tab-pane active">
                     <h3 class="text-2xl font-black mb-8">Loan EMI Calculator</h3>
                     <div class="grid md:grid-cols-2 gap-12">
                         <div class="space-y-6">
-                            <div>
-                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Principal Amount ($)</label>
-                                <input type="number" id="l-amt" value="50000" oninput="runLoan()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold">
-                            </div>
+                            <input type="number" id="l-amt" value="50000" oninput="doL()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Amount ($)">
                             <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Rate (%)</label>
-                                    <input type="number" id="l-int" value="8.5" step="0.1" oninput="runLoan()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold">
-                                </div>
-                                <div>
-                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Duration (Yrs)</label>
-                                    <input type="number" id="l-dur" value="10" oninput="runLoan()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold">
-                                </div>
+                                <input type="number" id="l-int" value="7.5" oninput="doL()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Rate (%)">
+                                <input type="number" id="l-dur" value="5" oninput="doL()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Years">
                             </div>
                         </div>
-                        <div class="card-gradient rounded-[2rem] p-10 text-white flex flex-col justify-center items-center text-center shadow-2xl">
-                            <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-2">Monthly Installment</p>
-                            <div id="l-res" class="text-5xl font-black">$620.35</div>
-                            <div class="w-full mt-8 pt-8 border-t border-slate-700 flex justify-between text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                                <span>Total Interest:</span>
-                                <span id="l-tot" class="text-white">$24,442</span>
-                            </div>
+                        <div class="card-dark rounded-[2rem] p-10 text-white text-center flex flex-col justify-center">
+                            <p class="text-slate-400 text-[10px] font-bold uppercase mb-2">Monthly EMI</p>
+                            <div id="l-res" class="text-5xl font-black">$1,001.90</div>
+                            <p id="l-tot" class="text-slate-500 text-[10px] font-bold mt-4 uppercase">Total Interest: $10,114</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- BMI -->
-                <div id="bmi" class="tab-content">
+                <!-- 2. BMI -->
+                <div id="p-bmi" class="tab-pane">
                     <h3 class="text-2xl font-black mb-8">BMI Health Analyzer</h3>
                     <div class="grid md:grid-cols-2 gap-12">
                         <div class="space-y-6">
-                            <input type="number" id="b-w" value="70" oninput="runBMI()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Weight (kg)">
-                            <input type="number" id="b-h" value="175" oninput="runBMI()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Height (cm)">
+                            <input type="number" id="b-w" value="70" oninput="doB()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Weight (kg)">
+                            <input type="number" id="b-h" value="175" oninput="doB()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Height (cm)">
                         </div>
-                        <div id="b-card" class="bg-white border-4 border-slate-900 rounded-[2rem] p-10 flex flex-col justify-center items-center text-center">
-                            <p class="text-slate-400 text-[10px] font-bold uppercase mb-2">BMI Score</p>
-                            <div id="b-val" class="text-6xl font-black">22.9</div>
-                            <div id="b-cat" class="mt-4 bg-slate-900 text-white px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">Normal Weight</div>
+                        <div id="b-card" class="bg-white border-4 border-slate-900 rounded-[2rem] p-10 text-center flex flex-col justify-center">
+                            <p class="text-slate-500 text-[10px] font-bold mb-1">BMI SCORE</p>
+                            <div id="b-res" class="text-6xl font-black">22.9</div>
+                            <div id="b-cat" class="mt-4 font-black uppercase text-xs">Normal Weight</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SIP -->
-                <div id="sip" class="tab-content">
+                <!-- 3. SIP -->
+                <div id="p-sip" class="tab-pane">
                     <h3 class="text-2xl font-black mb-8">SIP Wealth Planner</h3>
                     <div class="grid md:grid-cols-2 gap-12">
                         <div class="space-y-6">
-                            <input type="number" id="s-amt" value="500" oninput="runSIP()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Monthly SIP ($)">
+                            <input type="number" id="s-amt" value="500" oninput="doS()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Monthly SIP ($)">
                             <div class="grid grid-cols-2 gap-4">
-                                <input type="number" id="s-ret" value="12" oninput="runSIP()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Return (%)">
-                                <input type="number" id="s-yrs" value="10" oninput="runSIP()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Years">
+                                <input type="number" id="s-ret" value="12" oninput="doS()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Return (%)">
+                                <input type="number" id="s-yrs" value="10" oninput="doS()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold" placeholder="Years">
                             </div>
                         </div>
-                        <div class="card-gradient rounded-[2rem] p-10 text-white flex flex-col justify-center items-center text-center">
+                        <div class="card-dark rounded-[2rem] p-10 text-white text-center flex flex-col justify-center">
                             <p class="text-slate-400 text-[10px] font-bold uppercase mb-2">Maturity Wealth</p>
                             <div id="s-res" class="text-5xl font-black">$116,169</div>
-                            <div class="w-full mt-6 text-[10px] text-slate-500 uppercase font-bold">Invested: <span id="s-inv" class="text-white">$60,000</span></div>
+                            <p id="s-inv" class="text-slate-500 text-[10px] font-bold mt-4 uppercase">Invested: $60,000</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Discount -->
-                <div id="disc" class="tab-content">
-                    <h3 class="text-2xl font-black mb-8 text-center">Discount Calculator</h3>
+                <!-- 4. Discount -->
+                <div id="p-disc" class="tab-pane">
+                    <h3 class="text-2xl font-black mb-8 text-center">Discount & Savings</h3>
                     <div class="max-w-md mx-auto space-y-6">
-                        <input type="number" id="d-price" value="100" oninput="runDisc()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold text-center" placeholder="Original Price ($)">
-                        <input type="number" id="d-pct" value="20" oninput="runDisc()" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-slate-900 outline-none text-xl font-bold text-center" placeholder="Discount %">
-                        <div class="bg-slate-50 rounded-3xl p-8 border-2 border-slate-100 flex justify-around text-center">
-                            <div>
-                                <p class="text-[10px] font-black text-slate-400 uppercase mb-1">You Save</p>
-                                <p id="d-save" class="text-2xl font-black text-green-600">$20</p>
-                            </div>
-                            <div>
-                                <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Final Price</p>
-                                <p id="d-final" class="text-2xl font-black text-slate-900">$80</p>
-                            </div>
+                        <input type="number" id="d-price" value="100" oninput="doD()" class="w-full p-5 bg-slate-50 rounded-2xl font-bold text-xl text-center" placeholder="Original Price ($)">
+                        <input type="number" id="d-pct" value="20" oninput="doD()" class="w-full p-5 bg-slate-50 rounded-2xl font-bold text-xl text-center" placeholder="Discount %">
+                        <div class="bg-blue-600 rounded-[2rem] p-10 text-white flex justify-around text-center shadow-xl">
+                            <div><p class="text-[10px] font-bold uppercase mb-1 opacity-70">You Save</p><p id="d-save" class="text-2xl font-black">$20.00</p></div>
+                            <div><p class="text-[10px] font-bold uppercase mb-1 opacity-70">Final Price</p><p id="d-final" class="text-2xl font-black">$80.00</p></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Fuel -->
-                <div id="fuel" class="tab-content">
-                    <h3 class="text-2xl font-black mb-8">Fuel Cost Calculator</h3>
-                    <div class="grid md:grid-cols-2 gap-12">
-                        <div class="space-y-4">
-                            <input type="number" id="f-dist" value="500" oninput="runFuel()" class="w-full p-4 bg-slate-50 rounded-xl border font-bold" placeholder="Trip Distance (km)">
-                            <input type="number" id="f-eff" value="15" oninput="runFuel()" class="w-full p-4 bg-slate-50 rounded-xl border font-bold" placeholder="Efficiency (km/L)">
-                            <input type="number" id="f-price" value="1.5" oninput="runFuel()" class="w-full p-4 bg-slate-50 rounded-xl border font-bold" placeholder="Fuel Price per Liter">
-                        </div>
-                        <div class="bg-blue-50 rounded-[2rem] p-10 border-2 border-blue-100 flex flex-col justify-center items-center text-center">
-                            <p class="text-blue-600 text-[10px] font-black uppercase mb-1">Total Trip Cost</p>
-                            <div id="f-res" class="text-5xl font-black text-slate-900">$50.00</div>
+                <!-- 5. Fuel -->
+                <div id="p-fuel" class="tab-pane">
+                    <h3 class="text-2xl font-black mb-8 text-center">Fuel Cost Estimator</h3>
+                    <div class="max-w-md mx-auto space-y-4">
+                        <input type="number" id="f-dist" value="300" oninput="doF()" class="w-full p-4 bg-slate-50 rounded-xl font-bold" placeholder="Trip Distance (km)">
+                        <input type="number" id="f-eff" value="15" oninput="doF()" class="w-full p-4 bg-slate-50 rounded-xl font-bold" placeholder="Mileage (km/L)">
+                        <input type="number" id="f-prc" value="1.5" oninput="doF()" class="w-full p-4 bg-slate-50 rounded-xl font-bold" placeholder="Price per Liter">
+                        <div class="bg-slate-900 rounded-3xl p-8 text-white text-center mt-6">
+                            <p class="text-[10px] font-bold uppercase mb-1 text-slate-400">Total Fuel Cost</p>
+                            <div id="f-res" class="text-5xl font-black">$30.00</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tip -->
-                <div id="tip" class="tab-content">
-                    <h3 class="text-2xl font-black mb-8 text-center">Tip & Split Calculator</h3>
+                <!-- 6. Tip -->
+                <div id="p-tip" class="tab-pane">
+                    <h3 class="text-2xl font-black mb-8 text-center">Bill & Tip Splitter</h3>
                     <div class="max-w-md mx-auto space-y-6">
-                        <input type="number" id="t-bill" value="120" oninput="runTip()" class="w-full p-5 bg-slate-50 rounded-2xl border font-bold text-center" placeholder="Total Bill ($)">
+                        <input type="number" id="t-bill" value="150" oninput="doT()" class="w-full p-5 bg-slate-50 rounded-2xl font-bold text-center text-xl" placeholder="Total Bill ($)">
                         <div class="grid grid-cols-2 gap-4">
-                            <input type="number" id="t-pct" value="15" oninput="runTip()" class="w-full p-4 bg-slate-50 rounded-xl border font-bold text-center" placeholder="Tip %">
-                            <input type="number" id="t-ppl" value="4" oninput="runTip()" class="w-full p-4 bg-slate-50 rounded-xl border font-bold text-center" placeholder="Split (People)">
+                            <input type="number" id="t-pct" value="15" oninput="doT()" class="w-full p-4 bg-slate-50 rounded-xl font-bold text-center" placeholder="Tip %">
+                            <input type="number" id="t-ppl" value="3" oninput="doT()" class="w-full p-4 bg-slate-50 rounded-xl font-bold text-center" placeholder="People">
                         </div>
-                        <div class="card-gradient text-white rounded-[2rem] p-8 text-center">
-                            <p class="text-slate-400 text-[10px] font-black uppercase mb-1">Each Person Pays</p>
-                            <div id="t-res" class="text-4xl font-black">$34.50</div>
+                        <div class="card-dark rounded-[2.5rem] p-10 text-white text-center shadow-2xl">
+                            <p class="text-slate-400 text-[10px] font-bold uppercase mb-1">Per Person Total</p>
+                            <div id="t-res" class="text-5xl font-black">$57.50</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Age -->
-                <div id="age" class="tab-content">
+                <!-- 7. Age -->
+                <div id="p-age" class="tab-pane">
                     <h3 class="text-2xl font-black mb-8 text-center">Precision Age Finder</h3>
-                    <div class="max-w-sm mx-auto space-y-8">
-                        <input type="date" id="a-dob" oninput="runAge()" class="w-full p-6 bg-slate-50 rounded-2xl border font-bold text-center text-xl">
-                        <div id="a-box" class="hidden bg-slate-900 rounded-[2rem] p-10 text-white text-center animate-bounce">
-                            <p class="text-slate-400 text-[10px] font-black uppercase mb-2">Calculated Age</p>
+                    <div class="max-w-xs mx-auto space-y-10">
+                        <input type="date" id="a-dob" oninput="doA()" class="w-full p-6 bg-slate-50 rounded-[2rem] border-2 border-transparent focus:border-slate-900 font-bold text-xl text-center outline-none">
+                        <div id="a-box" class="hidden bg-blue-600 rounded-[2.5rem] p-12 text-white text-center shadow-xl animate-bounce">
+                            <p class="text-[10px] font-black uppercase mb-2 opacity-70">You Are Exactly</p>
                             <div id="a-res" class="text-3xl font-black">--</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Compound -->
-                <div id="comp" class="tab-content">
+                <!-- 8. Compound -->
+                <div id="p-comp" class="tab-pane">
                     <h3 class="text-2xl font-black mb-8">Compound Interest (Lump Sum)</h3>
                     <div class="grid md:grid-cols-2 gap-12">
                         <div class="space-y-4">
-                            <input type="number" id="c-amt" value="10000" oninput="runComp()" class="w-full p-4 bg-slate-50 rounded-xl border font-bold" placeholder="Initial Deposit ($)">
-                            <input type="number" id="c-rate" value="7" oninput="runComp()" class="w-full p-4 bg-slate-50 rounded-xl border font-bold" placeholder="Interest Rate %">
-                            <input type="number" id="c-yrs" value="10" oninput="runComp()" class="w-full p-4 bg-slate-50 rounded-xl border font-bold" placeholder="Years">
+                            <input type="number" id="c-amt" value="10000" oninput="doC()" class="w-full p-5 bg-slate-50 rounded-2xl font-bold" placeholder="Initial Investment ($)">
+                            <input type="number" id="c-int" value="8" oninput="doC()" class="w-full p-5 bg-slate-50 rounded-2xl font-bold" placeholder="Interest Rate %">
+                            <input type="number" id="c-yrs" value="10" oninput="doC()" class="w-full p-5 bg-slate-50 rounded-2xl font-bold" placeholder="Years">
                         </div>
-                        <div class="bg-indigo-600 rounded-[2rem] p-10 text-white flex flex-col justify-center items-center text-center">
-                            <p class="text-indigo-200 text-[10px] font-black uppercase mb-1">Final Balance</p>
-                            <div id="c-res" class="text-4xl font-black">$19,671</div>
+                        <div class="bg-indigo-600 rounded-[2rem] p-10 text-white flex flex-col justify-center text-center">
+                            <p class="text-indigo-200 text-[10px] font-black uppercase mb-1">Maturity Value</p>
+                            <div id="c-res" class="text-4xl font-black">$21,589</div>
+                            <p id="c-gain" class="mt-4 text-[10px] font-bold uppercase opacity-70">Profit: $11,589</p>
                         </div>
                     </div>
                 </div>
@@ -233,18 +194,44 @@
             </div>
         </div>
 
-        <!-- 🚀 MEGA CONTENT HUB FOR ADSENSE APPROVAL 🚀 -->
-        <hr class="border-slate-200 mb-20">
+        <!-- 🚀 MASSIVE CONTENT SECTION FOR ADSENSE APPROVAL 🚀 -->
+        <article id="articles" class="prose prose-slate max-w-none border-t border-slate-200 pt-20">
+            <h2 class="text-4xl font-black mb-10 tracking-tight text-slate-900">Empowering Decisions with Mathematical Precision</h2>
+            
+            <p class="text-slate-600 text-lg leading-relaxed mb-12">In the modern digital landscape, the ability to calculate financial trajectories and health benchmarks is not just a convenience—it is a necessity for long-term success. CalcForge was engineered to bridge the gap between complex mathematical models and daily user needs, providing a suite of 8 professional-grade tools that operate with server-side accuracy but absolute local privacy.</p>
 
-        <section id="learn" class="grid md:grid-cols-3 gap-12 mb-24">
-            <div class="md:col-span-2 prose prose-slate max-w-none">
-                <h2 class="text-4xl font-black mb-10 tracking-tight">The Ultimate Guide to Utility Math & Personal Success</h2>
-                
-                <h3 class="text-xl font-extrabold mt-12 mb-4">Why Mathematical Precision Matters</h3>
-                <p class="text-slate-600 leading-relaxed mb-6">In an era of information overload, the ability to distill complex scenarios into simple, actionable numbers is a superpower. Whether you are calculating the "cost of money" via a mortgage or tracking your physiological progress through BMI, the numbers never lie. CalcForge was engineered to remove the guesswork from your daily decisions.</p>
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="text-2xl font-black mb-6">The Science of Debt & Mortgages</h3>
+                    <p class="text-slate-600 mb-6">When taking a loan, the "sticker price" is often the smallest part of the story. Our <strong>Loan EMI Calculator</strong> reveals the true cost of borrowing by visualizing the impact of compound interest over decades. Financial health is often defined by the 28/36 rule: ensuring that your total debt obligations never consume more than 36% of your gross income. Understanding these margins is the first step toward financial freedom.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-black mb-6">Compound Interest: The Wealth Multiplier</h3>
+                    <p class="text-slate-600 mb-6">Einstein famously called compound interest the "Eighth Wonder of the World." Whether using our <strong>SIP Planner</strong> or the <strong>Lump Sum Compound Tool</strong>, the lesson is the same: time is more valuable than capital. Small, consistent contributions in your early 20s can far outpace massive investments made later in life. We provide these tools to help you visualize that exponential curve.</p>
+                </div>
+            </div>
 
-                <h3 class="text-xl font-extrabold mt-12 mb-4">Financial Literacy: The Loan Factor</h3>
-                <p class="text-slate-600 leading-relaxed mb-6">Loans are not just about the monthly payment; they are about the total amortized cost. By using our **Loan EMI Tool**, you can visualize the impact of interest rates. For instance, a 1% difference in interest on a $200,000 mortgage can save you over $40,000 over 30 years. Financial freedom begins with understanding these margins.</p>
+            <h3 class="text-2xl font-black mt-20 mb-8">Body Metrics & Preventive Health</h3>
+            <p class="text-slate-600 mb-6">Health is your primary asset. The <strong>Body Mass Index (BMI)</strong>, while a general metric, serves as a vital statistical screening tool for metabolic health. Maintaining a range between 18.5 and 24.9 is statistically linked to significantly lower risks of chronic cardiovascular issues and type-2 diabetes. CalcForge provides these metrics instantly, allowing you to track your fitness progress without storing your personal data on external servers.</p>
 
-                <h3 class="text-xl font-extrabold mt-12 mb-4">Health as an Asset: The BMI Metric</h3>
-                <p class="text-slate-600 leading-relaxed mb-6">Body Mass Index (BMI) remains one of the most effective screening tools for metabolic health. While it does not measure body fat percentage directly, it provides a crucial statistical range for healthy weight management. Maintaini
+            <div class="bg-slate-900 rounded-[3rem] p-10 md:p-16 text-white mt-20 shadow-2xl relative overflow-hidden">
+                <h3 class="text-2xl font-bold mb-6 text-white">CalcForge Privacy Manifesto</h3>
+                <p class="text-slate-400 leading-relaxed mb-8">We believe that your data belongs to you. Unlike other utility platforms that track your inputs to build advertising profiles, CalcForge performs 100% of its calculations within your browser's local memory. When you close the tab, your data vanishes. We sustain this platform solely through context-aware advertising, ensuring that our tools remain free for the global community forever.</p>
+                <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-blue-600 rounded-full blur-[100px] opacity-20"></div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer class="bg-white border-t py-20 mt-20 text-center">
+        <div class="text-2xl font-black text-slate-900 mb-2">CalcForge</div>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.4em] mb-12">Universal Utility Authority</p>
+        <div class="flex justify-center space-x-8 text-[10px] font-black uppercase tracking-widest text-slate-500">
+            <a href="index.html" class="hover:text-slate-900 transition underline underline-offset-8">Home Portal</a>
+            <a href="privacy.html" class="hover:text-slate-900 transition">Privacy Policy</a>
+            <a href="contact.html" class="hover:text-slate-900 transition">Support Center</a>
+        </div>
+    </footer>
+
+    <script>
+        // Tab En
