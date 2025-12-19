@@ -1,2 +1,1 @@
-Replace the X's with your actual Publisher ID from your AdSense Dashboard
-https://www.google.com/url?sa=E&source=gmail&q=google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+https://www.google.com/url?sa=E&source=gmail&q=google.com, pub-4813365942531906, DIRECT, f08c47fec0942fa0
