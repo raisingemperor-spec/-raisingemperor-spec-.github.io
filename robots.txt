@@ -1,0 +1,1 @@
+User-agent: *Allow: /SitemapsSitemap: https://www.google.com/search?q=https://raisingemperor-spec.github.io/sitemap.xml
